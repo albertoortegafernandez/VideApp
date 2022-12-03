@@ -4,7 +4,7 @@ export const Detail = () => {
   return (
     <>
     <div>Detail Page</div>
-    <p>description</p>
+    <p>new description</p>
     </>
   )
 }
