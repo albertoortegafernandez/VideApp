@@ -1,20 +1,18 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { HashRouter, Routes,Route } from "react-router-dom";
+import { HashRouter} from "react-router-dom";
+import { Provider } from "react-redux";
+import store from "./app/store/store";
 import App from "./App";
-import { Detail } from "./Detail";
-import Home from "./Home";
-import "./index.css";
+
+import "./app.css";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
-  <React.StrictMode>
+ 
+    <Provider store={store}>
     <HashRouter>
-      <Routes>
-        <Route path="/" element={<App />}>
-          <Route index element={<Home />}></Route>
-          <Route path="detail" element={<Detail />}></Route>
-        </Route>
-      </Routes>
+        <App />
     </HashRouter>
-  </React.StrictMode>
+    </Provider>
+  
 );

@@ -1,19 +1,17 @@
-import {Link, Outlet} from "react-router-dom"
+import { Route, Routes } from "react-router-dom";
+import { Detail } from "./app/pages/Detail";
+import Home from "./app/pages/Home";
 
 function App() {
-
   return (
-    <main>
-      <div>
-        <h1>VideoApp</h1>
-        <nav>
-          <Link to="/">Home</Link> | <Link to="detail">Detail</Link>
-        </nav>
-      </div>
-      <Outlet />
-    </main>
-  )
+    <>
+      <Routes>
+        <Route path="/" element={<App />} />
+        <Route index element={<Home />} />
+        <Route path="detail" element={<Detail />} />
+      </Routes>
+    </>
+  );
 }
 
-export default App
-
+export default App;
