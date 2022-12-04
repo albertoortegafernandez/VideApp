@@ -1,13 +1,13 @@
-import { Typography } from "@mui/material";
+import { Button, Container } from "@mui/material";
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import tmdb from "../api/tmdb";
-import { NavBar } from "../components/NavBar";
-import { addMovies } from "../store/reducers/movies/movieSlice";
+import ItemsCarousel from "../components/ItemsCarousel";
+import { NavBar } from "../components/Navbar";
+import { addMovies, getAllMovies } from "../store/reducers/movies/movieSlice";
 import { addTvShows } from "../store/reducers/tvShows/tvShowSlice";
 
-function Home() {
+export const Home = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -23,12 +23,21 @@ function Home() {
     fetchTvShows();
   }, []);
 
+  const movies = useSelector(getAllMovies);
+  
+
   return (
     <>
-      <Typography>Video App</Typography>
-      <Link to="detail">Detail</Link>
+      <NavBar />
+      <Container sx={{ml:80 ,mt:12}}>
+          <Button variant="contained"> Movies</Button>
+          <Button sx={{ml:30 }}variant="contained"> Tv Shows</Button>
+      </Container>
+      <Container>
+        <ItemsCarousel movies={movies} />
+      </Container>
     </>
   );
-}
+};
 
 export default Home;
