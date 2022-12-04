@@ -17,12 +17,15 @@ export const Item = ({ movie }: Props) => {
       />
       <div>
         <Typography align="center" variant="h3">
-          {movie.title}
+          {movie.title ? movie.title : movie.name}
         </Typography>
         <Typography variant="h4" align="center">
           {movie.vote_average}
         </Typography>
-        <Button sx={{ml:67, mb:3, mt:1}}variant="contained"> +Info</Button>
+        <Button sx={{ ml: 67, mb: 3, mt: 1 }} variant="contained">
+          {" "}
+          +Info
+        </Button>
       </div>
     </Paper>
   );
