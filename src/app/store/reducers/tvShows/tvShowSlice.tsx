@@ -15,5 +15,6 @@ const tvShowSlice = createSlice({
 });
 
 export const { addTvShows } = tvShowSlice.actions;
-export const getAllTvShows = (state: { tvShows: { tvShows: []; }; }) => state.tvShows.tvShows;
+export const getAllTvShows = (state: { tvShows: { tvShows: [] } }) =>
+  state.tvShows.tvShows;
 export default tvShowSlice.reducer;

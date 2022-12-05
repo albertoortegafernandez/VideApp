@@ -3,11 +3,7 @@ export interface MovieShow {
   title?: string;
   poster_path: string;
   vote_average: number;
-  genres: [
-    {
-      id: number;
-    }
-  ];
+  genres: [];
   overview: string;
   release_date: string;
 }

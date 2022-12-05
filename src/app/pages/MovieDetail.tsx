@@ -6,57 +6,41 @@ import {
   CardMedia,
   CardActionArea,
   Grid,
+  Container,
+  Box,
 } from "@mui/material";
-import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import tmdb from "../api/tmdb";
-import { getAllMovies } from "../store/reducers/movies/movieSlice";
 import { MovieShow } from "../interface/movieShow.interface";
+import { MovieSelectedCard } from "../components/MovieSelectedCard";
 
 export const MovieDetail = () => {
   const { id } = useParams();
-  const movies = useSelector(getAllMovies);
   const [movieSelected, setMovieSelected] = useState<MovieShow>();
+  const [similarMovies, setSimilarMovies] = useState([]);
 
   useEffect(() => {
-    const fetchMovies = async () => {
+    const fetchMovie = async () => {
       const { data } = await tmdb.get(`/movie/${id}`);
       setMovieSelected(data);
     };
-    fetchMovies();
+    fetchMovie();
+    const fetchSimilarMovies = async () => {
+      const { data } = await tmdb.get(`/movie/${id}/similar`);
+      setSimilarMovies(data.results);
+    };
+    fetchSimilarMovies();
   }, []);
-
-  // const categoria= ["electricidad","gas"];
-  // const categoria2 =["gas","luz"];
-  
-  //  const listTotal = [
-  //      {category: "electricidad",date:"01/01/01"},
-  //      {category: "gas",date:"01/01/01"},
-  //      {category: "electricidad",date:"01/01/01"},
-  //      {category: "luz",date:"01/01/01"} 
-  //  ]
-  
-  // function filtra(array, filtro) {
-  //  return array.filter(elem => filtro.includes(elem.category));
-  // }
-  
-  // console.log("Filtrando electricidad y gas", filtra(listTotal, categoria));
-  // console.log("Filtrando gas y luz", filtra(listTotal, categoria2));
-
-
-  function filterCategory(array: any[], filter: number) {
-    return array.filter(items => filter.includes(items.genre_ids));
-  }
-
-  console.log(filterCategory(movies,movieSelected?.genres))
 
   return (
     <>
-      <Grid container
+      <Grid
+        container
         direction="row"
         justifyContent="row"
         alignItems="left"
-        sx={{ mt: 12 }}>
+        sx={{ mt: 12 }}
+      >
         <Typography
           className="text"
           component="a"
@@ -124,6 +108,15 @@ export const MovieDetail = () => {
           Other similar movies:
         </Typography>
       </Grid>
+      <Container>
+        <Grid container spacing={1}>
+          {similarMovies.map((item, index: number) => (
+            <Grid key={index} xs={8} sm={6} md={4}>
+              <MovieSelectedCard movie={item} />
+            </Grid>
+          ))}
+        </Grid>
+      </Container>
     </>
   );
 };

@@ -1,15 +1,15 @@
-body{
+body {
   background-image: url("./assets/fondo.jpg");
   background-repeat: no-repeat;
-  background-size:auto;
+  background-size: auto;
   background-position: center center;
   background-attachment: fixed;
-  background-size: cover; 
+  background-size: cover;
 }
-.dark{
+.dark {
   background-color: black;
-  color:white
+  color: white;
 }
-.text{
-  color:white
+.text {
+  color: white;
 }

@@ -1,4 +1,4 @@
-import { Button, Container, Grid } from "@mui/material";
+import { Button, Container, Grid, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import tmdb from "../api/tmdb";
@@ -11,6 +11,7 @@ import {
 
 export const Home = () => {
   const dispatch = useDispatch();
+  const [descriptionVideoApp,setDescriptionVideoApp] = useState("Welcome to VideoApp; the app where you will find a lot of movies and tv shows. If you want to know the most popular movies and tv shows of the moment click on the corresponding button.")
 
   useEffect(() => {
     const fetchMovies = async () => {
@@ -31,9 +32,11 @@ export const Home = () => {
 
   const handlerMovies = () => {
     setVideos(movies);
+    setDescriptionVideoApp("");
   };
   const handlerTvShows = () => {
     setVideos(tvShows);
+    setDescriptionVideoApp("");
   };
 
   return (
@@ -52,6 +55,7 @@ export const Home = () => {
           Tv Shows
         </Button>
       </Grid>
+      <Typography className="text" sx={{mt:5}} variant="h4" align="center">{descriptionVideoApp}</Typography>
       <Container>
         <ItemsCarousel movies={videos} />
       </Container>

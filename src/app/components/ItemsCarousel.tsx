@@ -7,10 +7,12 @@ interface Props {
   movies: Movie[];
 }
 
-export default function ItemsCarousel({movies}: Props) {
+export default function ItemsCarousel({ movies }: Props) {
   return (
-    <Carousel sx={{mt:5}}>
-      {movies.map((item,i)=> <Item key={i} movie={item} />)}
+    <Carousel sx={{ mt: 5 }}>
+      {movies.map((item, i) => (
+        <Item key={i} movie={item} />
+      ))}
     </Carousel>
   );
 }

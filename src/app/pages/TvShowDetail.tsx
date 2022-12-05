@@ -3,20 +3,20 @@ import {
   CardActionArea,
   CardContent,
   CardMedia,
+  Container,
   Grid,
   Typography,
 } from "@mui/material";
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import tmdb from "../api/tmdb";
+import { TvShowSelectedCard } from "../components/TvShowSelectedCard";
 import { TvShow } from "../interface/tvShow.interface";
-import { getAllTvShows } from "../store/reducers/tvShows/tvShowSlice";
 
 export const TvShowDetail = () => {
   const { id } = useParams();
-  const tvShows = useSelector(getAllTvShows);
   const [tvSelected, setTvSelected] = useState<TvShow>();
+  const [similarTvShows, setSimilarTvShows] = useState([]);
 
   useEffect(() => {
     const fetchMovies = async () => {
@@ -24,15 +24,22 @@ export const TvShowDetail = () => {
       setTvSelected(data);
     };
     fetchMovies();
+    const fetchSimilarTvShows = async () => {
+      const { data } = await tmdb.get(`/tv/${id}/similar`);
+      setSimilarTvShows(data.results);
+    };
+    fetchSimilarTvShows();
   }, []);
 
   return (
     <>
-      <Grid container
+      <Grid
+        container
         direction="row"
         justifyContent="row"
         alignItems="left"
-        sx={{ mt: 12 }}>
+        sx={{ mt: 12 }}
+      >
         <Typography
           className="text"
           component="a"
@@ -100,6 +107,15 @@ export const TvShowDetail = () => {
           Other similar movies:
         </Typography>
       </Grid>
+      <Container>
+        <Grid container spacing={1}>
+          {similarTvShows.map((item, index: number) => (
+            <Grid key={index} xs={8} sm={6} md={4}>
+              <TvShowSelectedCard tvShow={item} />
+            </Grid>
+          ))}
+        </Grid>
+      </Container>
     </>
   );
 };
