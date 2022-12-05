@@ -1,6 +1,7 @@
 import { Route, Routes } from "react-router-dom";
-import { Detail } from "./app/pages/Detail";
+import { MovieDetail } from "./app/pages/MovieDetail";
 import Home from "./app/pages/Home";
+import { TvShowDetail } from "./app/pages/TvShowDetail";
 
 function App() {
   return (
@@ -8,7 +9,8 @@ function App() {
       <Routes>
         <Route path="/" element={<App />} />
         <Route index element={<Home />} />
-        <Route path="detail" element={<Detail />} />
+        <Route path="tvShowDetail/:id" element={<TvShowDetail />} />
+        <Route path="movieDetail/:id" element={<MovieDetail />} />
       </Routes>
     </>
   );

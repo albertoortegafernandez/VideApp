@@ -4,10 +4,12 @@ body{
   background-size:auto;
   background-position: center center;
   background-attachment: fixed;
-  background-size: cover;
-  
+  background-size: cover; 
 }
-
 .dark{
-  background-color:black;
+  background-color: black;
+  color:white
+}
+.text{
+  color:white
 }

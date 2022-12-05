@@ -7,7 +7,7 @@ export const NavBar = () => {
         <Toolbar className="dark">
           <Typography
             component="a"
-            href="/"
+            href="/VideoApp/"
             variant="h3"
             align="center"
             sx={{ flexGrow: 1, color: "inherit", textDecoration: "none" }}
