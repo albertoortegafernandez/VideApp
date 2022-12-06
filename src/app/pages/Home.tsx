@@ -11,7 +11,10 @@ import {
 
 export const Home = () => {
   const dispatch = useDispatch();
-  const [descriptionVideoApp,setDescriptionVideoApp] = useState("Welcome to VideoApp; the app where you will find a lot of movies and tv shows. If you want to know the most popular movies and tv shows of the moment click on the corresponding button.")
+  const [descriptionVideoApp, setDescriptionVideoApp] = useState(
+    "Welcome to VideoApp; the app where you will find a lot of movies and tv shows. If you want to know the most popular movies and tv shows of the moment click on the corresponding button."
+  );
+  const [titleVideos, setTitleVideos] = useState("");
 
   useEffect(() => {
     const fetchMovies = async () => {
@@ -33,10 +36,12 @@ export const Home = () => {
   const handlerMovies = () => {
     setVideos(movies);
     setDescriptionVideoApp("");
+    setTitleVideos("Popular Movies");
   };
   const handlerTvShows = () => {
     setVideos(tvShows);
     setDescriptionVideoApp("");
+    setTitleVideos("Popular Tv SHows");
   };
 
   return (
@@ -55,8 +60,18 @@ export const Home = () => {
           Tv Shows
         </Button>
       </Grid>
-      <Typography className="text" sx={{mt:5}} variant="h4" align="center">{descriptionVideoApp}</Typography>
+      <Typography className="text" sx={{ mt: 5 }} variant="h4" align="center">
+        {descriptionVideoApp}
+      </Typography>
       <Container>
+        <Typography
+          className="text"
+          sx={{ mt: 5, mb: 5 }}
+          variant="h3"
+          align="center"
+        >
+          {titleVideos}
+        </Typography>
         <ItemsCarousel movies={videos} />
       </Container>
     </>

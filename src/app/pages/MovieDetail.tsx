@@ -57,13 +57,13 @@ export const MovieDetail = () => {
         direction="row"
         justifyContent="center"
         alignItems="center"
-        sx={{ mt: 8 }}
       >
-        <Card sx={{ maxWidth: 545 }}>
+        <Card sx={{ maxWidth: 420, mt: 6 }}>
           <CardActionArea>
             <CardMedia
+              style={{ objectFit: "cover" }}
               component="img"
-              height="540"
+              height="600"
               image={`https://image.tmdb.org/t/p/original/${movieSelected?.poster_path}`}
               alt={movieSelected?.title}
             />

@@ -19,11 +19,11 @@ export const TvShowSelectedCard = ({ tvShow }: Props) => {
           alt={tvShow.name}
         />
         <CardContent>
-          <Typography gutterBottom variant="h5" component="div">
+          <Typography gutterBottom variant="h6" component="div">
             {tvShow.name}
           </Typography>
           <Typography variant="body1" color="text.secondary">
-            {tvShow.vote_average}
+            Popularity: {tvShow.vote_average}
           </Typography>
         </CardContent>
       </CardActionArea>
