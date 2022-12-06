@@ -7,7 +7,6 @@ import {
   CardActionArea,
   Grid,
   Container,
-  Box,
 } from "@mui/material";
 import { useParams } from "react-router-dom";
 import tmdb from "../api/tmdb";
