@@ -4,9 +4,9 @@ import {
   CardContent,
   CardMedia,
   Container,
-  Grid,
   Typography,
 } from "@mui/material";
+import Grid from "@mui/material/Unstable_Grid2/Grid2";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import tmdb from "../api/tmdb";

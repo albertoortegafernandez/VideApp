@@ -5,13 +5,13 @@ import {
   Card,
   CardMedia,
   CardActionArea,
-  Grid,
   Container,
 } from "@mui/material";
 import { useParams } from "react-router-dom";
 import tmdb from "../api/tmdb";
 import { MovieShow } from "../interface/movieShow.interface";
 import { MovieSelectedCard } from "../components/MovieSelectedCard";
+import Grid from "@mui/material/Unstable_Grid2/Grid2";
 
 export const MovieDetail = () => {
   const { id } = useParams();
