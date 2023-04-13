@@ -8,7 +8,6 @@ import {
   addTvShows,
   getAllTvShows,
 } from "../store/reducers/tvShows/tvShowSlice";
-
 export const Home = () => {
   const dispatch = useDispatch();
   const [descriptionVideoApp, setDescriptionVideoApp] = useState(
